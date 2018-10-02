@@ -1,0 +1,41 @@
+page-aprendizaje {
+    .parrafo-aprendisaje {
+        padding-top: 10px;
+    }
+    .title-aprendisaje {
+        padding: 10px;
+    }
+    .btn-aprendisaje {
+        height: 40px;
+    }
+    .btn-img-aprendisaje {
+        height: 60px;
+        width: 80%;
+    }
+    .ion-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .ion-item {
+            //width: calc(50vw - 20px);
+            //height: calc(50vw - 20px);
+            border: none !important;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin-bottom: 16px;
+            //background-color: #dedede;
+            .item-inner {
+                border-bottom: none;
+            }
+            .input-wrapper {
+                text-align: center;
+            }
+        }
+    }
+    .ion-img {
+        height: 120px;
+        width: 100%;
+    }
+    .radio-md {
+        margin-bottom: 20px;
+    }
+}

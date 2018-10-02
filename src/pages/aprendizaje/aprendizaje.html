@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons float-left>
+            <button ion-button icon-only (click)="mostrarMenu()">
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        </ion-buttons>
+        <ion-title text-center>
+            Aprendizaje
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="title-aprendisaje">
+        <h2>¿Listo para empezar?</h2>
+    </div>
+    <p>Selecciona el idioma:</p>
+    <ion-row>
+
+        <ion-col radio-group [(ngModel)]="idioma">
+
+            <ion-radio checked [value]="es"></ion-radio>
+
+            <img [src]="banderaEspanol" class="btn-img-aprendisaje" (click)="check('es')" />
+
+            <div text-center>Español</div>
+
+        </ion-col>
+
+
+        <ion-col radio-group [(ngModel)]="idioma">
+
+            <ion-radio checked [value]="en"></ion-radio>
+
+            <img [src]="banderaIngles" class="btn-img-aprendisaje" (click)="check('en')" />
+
+            <div text-center>Inglés</div>
+
+        </ion-col>
+
+    </ion-row>
+    <p class="parrafo-aprendisaje">¿Qué deseas aprender?</p>
+
+    <ion-list class="ion-list">
+        <ion-item class="ion-item" *ngFor="let item of aprendizaje" (click)="iniciar(item)">
+            <img [src]="item.imagen" class="ion-img">
+
+        </ion-item>
+    </ion-list>
+
+</ion-content>

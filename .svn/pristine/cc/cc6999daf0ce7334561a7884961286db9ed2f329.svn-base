@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons float-left>
+            <button ion-button icon-only (click)="mostrarMenu()">
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        </ion-buttons>
+        <ion-title text-center>
+            Juegos
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button (click)="juegoAnimales()">Juegos Animales</button>
+</ion-content>

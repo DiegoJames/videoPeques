@@ -1,0 +1,135 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons float-left>
+            <button ion-button icon-only (click)="mostrarMenu()">
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        </ion-buttons>
+        <ion-title text-center>
+            Adivinanzas
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-slides>
+
+        <!-- Código para crear slides -->
+        <ion-slide>
+            <div class="slide-title-dificultad">
+                <h2>¿Listo para empezar?</h2>
+            </div>
+
+            <p class="slide-parrafo-dificultad">Dificultad</p>
+            <ion-buttons *ngFor="let dificultad of dificultades">
+                <button class="btn-dificultad larger" ion-button block color="primary" (click)="iniciar(dificultad.nombre)">
+                            {{dificultad.nombre}}
+                        </button>
+            </ion-buttons>
+
+
+        </ion-slide>
+        <!-- Fin del ngFor -->
+
+        <!-- Código para crear slides -->
+        <ion-slide *ngFor="let adivina of adivinanzas">
+            <div class="slide-title">
+                <h2 *ngIf="texto != ''" [innerHTML]="texto"></h2>
+                <h2 *ngIf="pista != ''" [innerHTML]="pista"></h2>
+            </div>
+
+            <ion-toolbar>
+
+                <ion-buttons left>
+                    <button ion-button color="primary" (click)="anterior()" color="light" class="swiper-button-prev swiper-button-black" [disabled]="primero">
+                                    
+                            </button>
+                </ion-buttons>
+
+                <img [src]="image" class="slide-image" />
+
+                <ion-buttons right>
+                    <button ion-button color="primary" (click)="siguiente()" color="light" class="swiper-button-next swiper-button-black" [disabled]="final">
+                                
+                        </button>
+                </ion-buttons>
+
+
+            </ion-toolbar>
+            <p [innerHTML]="adivina.description"></p>
+            <ion-row>
+                <ion-col>
+                    <button ion-button icon-start clear small *ngIf="dificultad == 'Baja' || dificultad == 'Media'" (click)="verPista(adivina)" [disabled]="disableBtns">
+                                <ion-icon name="search"></ion-icon>
+                                <div>Pista</div>
+                              </button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button icon-start clear small (click)="play(adivina)" [disabled]="disableBtns">
+                                    <ion-icon name="play"></ion-icon>
+                                    <div>Play</div>
+                                </button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button icon-start clear small (click)="solucion(adivina)" [disabled]="disableBtns">
+                                <ion-icon name="open"></ion-icon>
+                                <div>Solución</div>
+                            </button>
+                </ion-col>
+            </ion-row>
+
+            <div *ngIf="dificultad == 'Baja'">
+                <p class="slide-parrafo-alternativas">Alternativas:</p>
+                <ion-row>
+                    <ion-col *ngFor="let alternativa of adivina.alternativas">
+                        <button ion-button icon-start clear small class="slide-button" (click)="esCorrecta(alternativa, adivina)" [disabled]="disableBtns">
+                            <ion-thumbnail>
+                                <img [src]="alternativa.imagen" />
+                            </ion-thumbnail>
+                            
+                        </button>
+                        <p class="slide-parrafo-alternativa">{{alternativa.nombre}}</p>
+                    </ion-col>
+
+
+                </ion-row>
+            </div>
+        </ion-slide>
+        <!-- Fin del ngFor -->
+
+
+
+    </ion-slides>
+
+    <!--
+    <ion-card>
+        <img src="assets/imgs/logo/icon.png " />
+        <ion-card-content>
+            <p>
+                Es un gran señorón, tiene verde sombrero y pantalón marrón.
+            </p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                <ion-icon name="search "></ion-icon>
+                <div>ver pista</div>
+              </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="play "></ion-icon>
+                    <div>Reproducir</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                <ion-icon name="open "></ion-icon>
+                <div>Ver Solución</div>
+            </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>-->
+</ion-content>

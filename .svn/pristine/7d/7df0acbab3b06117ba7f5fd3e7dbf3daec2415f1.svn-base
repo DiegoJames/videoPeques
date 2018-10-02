@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+
+  listaVideos:any[] = [
+    {
+      id: 1,
+      nombre:'video1',
+      url:'https://html5demos.com/assets/dizzy.mp4',
+      imagen:''
+    },
+    {
+      id: 2,
+      nombre:'video2',
+      url:'https://html5demos.com/assets/dizzy.mp4',
+      imagen:''
+    },
+    {
+      id: 3,
+      nombre:'video3',
+      url:'https://html5demos.com/assets/dizzy.mp4',
+      imagen:''
+    }
+  ];
+
+  constructor(public navCtrl: NavController) {
+
+  }
+
+  reproducir(){
+    
+  }
+
+}

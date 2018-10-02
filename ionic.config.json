@@ -1,6 +1,8 @@
 {
   "name": "videoPeques",
-  "app_id": "",
+  "app_id": "8b8efa98",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

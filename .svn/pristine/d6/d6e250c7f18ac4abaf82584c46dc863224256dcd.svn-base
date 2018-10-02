@@ -1,0 +1,44 @@
+<ion-content padding>
+    <div class="categories-wrapper">
+
+        <ion-label class="section-tittle">Categories</ion-label>
+
+        <ion-scroll scrollX="true" style="height:20vw" class="categories-buttons-wrapper">
+
+            <button ion-button round color="danger" (tap)="searchChannelVideos()">
+                <ion-icon name="ion-flame" style="margin-right: 10px;"></ion-icon>
+                  Channel Peppa Pig
+                </button>
+
+            <button ion-button round color="danger" (tap)="searchTextVideos()">
+                    <ion-icon name="ion-flame" style="margin-right: 10px;"></ion-icon>
+                      Buscar Dragon
+                    </button>
+
+            <button ion-button round color="danger" (tap)="searchLiveVideos()">
+                        <ion-icon name="ion-flame" style="margin-right: 10px;"></ion-icon>
+                          Live Peppa Pig
+                        </button>
+
+            <button ion-button round color="danger" (tap)="searchTrandingVideos()">
+            <ion-icon name="ion-flame" style="margin-right: 10px;"></ion-icon>
+              Tranding
+            </button>
+            <button ion-button round *ngFor="let category of categories" (tap)="searchVideos(category?.id)">
+              {{ category?.snippet?.title }}
+            </button>
+
+        </ion-scroll>
+    </div>
+
+    <div class="videos-wrapper">
+        <ion-label class="section-tittle">Videos</ion-label>
+        <ion-list class="videos-list">
+            <ion-item *ngFor="let video of videos" class="youtube-video-cell" (tap)="youtube.openVideo(video?.id?.videoId ? video?.id?.videoId : video?.id)">
+                <img [src]="video?.snippet?.thumbnails['default']?.url" item-start>
+                <h2>{{ video?.snippet?.title }}</h2>
+                <p>{{ video?.snippet?.description }}</p>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

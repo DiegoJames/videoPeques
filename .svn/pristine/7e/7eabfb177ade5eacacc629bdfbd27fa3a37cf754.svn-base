@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Ionic Blank
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list-header *ngFor="let item of listaVideos">
+        <button ion-button item-start color="dark"><ion-icon name="logo-youtube"></ion-icon></button>
+        <h2>{{ item.nombre }}</h2>
+        <button ion-button outline item-end (click)="reproducir()"><ion-icon name="play" md="md-play"></ion-icon></button>
+        <button ion-button outline item-end (click)="descargar()"><ion-icon name="download" md="md-download"></ion-icon></button>
+    </ion-list-header>
+</ion-content>

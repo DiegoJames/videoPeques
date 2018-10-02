@@ -1,0 +1,49 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title text-center>{{ titulo }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list class="ion-list" *ngIf="es != ''">
+        <ion-item class="ion-item" *ngFor="let to of listaSeleccionada" (click)="vozEspanol(to?.texto_es)">
+            <img [src]="to?.imagen" class="ion-img">
+            <p text-wrap>
+                {{to.texto_es}}
+            </p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list class="ion-list" *ngIf="en != ''">
+        <ion-item class="ion-item" *ngFor="let to of listaSeleccionada" (click)="vozIngles(to?.texto_en)">
+            <img [src]="to?.imagen" class="ion-img">
+            <p text-wrap>
+                {{to.texto_en}}
+            </p>
+        </ion-item>
+    </ion-list>
+
+
+    <!--<ion-list class="ion-list" *ngIf="es != ''">
+        <ion-item class="ion-item" *ngFor="let to of listaSeleccionada" (click)="vozEspanol(to?.texto_es)">
+           
+            <p text-wrap>
+                {{to.texto_es}}
+            </p>
+        </ion-item>
+    </ion-list>
+    <ion-list class="ion-list" *ngIf="en != ''">
+        <ion-item class="ion-item" *ngFor="let to of listaSeleccionada" (click)="vozIngles(to?.texto_en)">
+           
+            <p text-wrap>
+                {{to?.texto_en}}
+            </p>
+        </ion-item>
+    </ion-list>-->
+
+
+</ion-content>

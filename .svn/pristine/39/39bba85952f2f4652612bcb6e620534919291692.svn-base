@@ -1,0 +1,5 @@
+page-videos {
+    .scroll-zoom-wrapper {
+        display: inline-flex;
+    }
+}

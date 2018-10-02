@@ -1,0 +1,111 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
+
+// Plugins
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
+// Services
+import { YoutubeProvider } from '../../providers/youtube';
+import { Items } from '../../interfaces/Iyoutube';
+
+
+@IonicPage()
+@Component({
+  selector: 'page-videos',
+  templateUrl: 'videos.html',
+})
+export class VideosPage {
+
+  loader : Loading;
+  categories: Items[] = [];
+  videos: Items[] = [];
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public youtube: YoutubeVideoPlayer, 
+              private youtubeProvider: YoutubeProvider,
+              public loadingCtrl: LoadingController) {
+    this.youtubeProvider.fetchCategories()
+    .then(data => {
+      console.log("fetchCategories: "+JSON.stringify(data));
+      if(data) {
+        this.categories = data.items;
+      }
+
+      this.searchTrandingVideos();
+      
+    });
+  }
+
+  searchVideos(categoryId: number) {
+    this.presentLoading();
+    this.youtubeProvider.searchVideos(categoryId)
+    .then(data => {
+      console.log("searchVideos: "+JSON.stringify(data));
+      if(data) {
+        this.videos = data.items;
+        this.loader.dismiss();
+      }
+    });
+    
+  }
+
+  searchChannelVideos(){
+    this.presentLoading();
+    this.youtubeProvider.searchChannelVideos()
+    .then(data => {
+      console.log("searchChannelVideos: "+JSON.stringify(data));
+      if(data) {
+        this.videos = data.items;
+        this.loader.dismiss();
+      }
+    });
+  }
+
+  searchTextVideos(){
+    this.presentLoading();
+    this.youtubeProvider.searchTextVideos()
+    .then(data => {
+      console.log("searchTextVideos: "+JSON.stringify(data));
+      if(data) {
+        this.videos = data.items;
+        this.loader.dismiss();
+      }
+    });
+  }
+
+  searchLiveVideos(){
+    this.presentLoading();
+    this.youtubeProvider.searchLiveVideos()
+    .then(data => {
+      console.log("searchLiveVideos: "+JSON.stringify(data));
+      if(data) {
+        this.videos = data.items;
+        this.loader.dismiss();
+      }
+    });
+  }
+
+  searchTrandingVideos() {
+    this.youtubeProvider.searchTrandingVideos()
+    .then(data => {
+      console.log("searchTrandingVideos: "+JSON.stringify(data));
+      if(data) {
+        this.videos = data.items;
+      }
+    });
+  }
+
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Cargando...",
+    });
+    this.loader.present();
+    
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VideosPage');
+  }
+
+}

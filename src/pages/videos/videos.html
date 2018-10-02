@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons float-left>
+            <button ion-button icon-only (click)="mostrarMenu()">
+                      <ion-icon name="menu"></ion-icon>
+                    </button>
+        </ion-buttons>
+        <ion-title text-center>
+            Videos
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="categories-wrapper">
+        <button ion-button round (click)="verCapitulos()">CAPITULOS</button>
+        <button ion-button round float-right (click)="verMusicales()">MUSICALES</button>
+        <ion-label class="section-tittle">Categorías</ion-label>
+
+        <ion-list class="ion-list">
+            <div *ngFor="let item of canales">
+                <ion-item class="ion-item" *ngIf="esCapitulos && item.playlistId != null" (click)="searchPlaylistItemVideos(item)">
+
+                    <img *ngIf="item.playlistId != null" [src]="item?.imagen" item-start>
+
+                </ion-item>
+            </div>
+
+            <div *ngFor="let item of canales">
+                <ion-item class="ion-item" *ngIf="!esCapitulos && item.musicales != null" (click)="searchPlaylistItemVideos(item)">
+
+                    <img [src]="item?.imagen" item-start>
+
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>
